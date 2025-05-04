@@ -15,4 +15,6 @@ gendiff -h
 
 ### Basic
 
+[![asciicast](https://asciinema.org/a/8gHHPZuNn7y1NNq9556pKDI8i.svg)](https://asciinema.org/a/8gHH
+
 
