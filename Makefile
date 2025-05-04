@@ -7,7 +7,3 @@ package-install:
 # Building the package
 build:
 	uv build
-
-#Installing the assembled package
-as.-package-install:
-	uv tool install dist/*.whl

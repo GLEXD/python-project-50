@@ -1,10 +1,5 @@
 import argparse
-import json
-from pathlib import Path
-
-
-def parse_file(file_path):
-    return json.load(open(file_path))
+from gendiff import generate_diff
 
 
 def main():
@@ -12,19 +7,16 @@ def main():
         prog="gendiff",
         description="Compares two configuration files and shows a difference."
     )
+    parser.add_argument("first_file", help="Path to the first file")
+    parser.add_argument("second_file", help="Path to the second file")
+    parser.add_argument(
+        '-f', '--format',
+        help='Set output format (default: stylish)',
+        default='stylish'
+    )
 
-
-    parser.add_argument("first_file")
-    parser.add_argument("second_file")
-    parser.add_argument('-f' ,'--format', help='set format of output')
     args = parser.parse_args()
-
-
-    data1 = parse_file(args.first_file)
-    data2 = parse_file(args.second_file)
-
-    print("File 1:", data1)
-    print("File 2:", data2)
+    print(generate_diff(args.first_file, args.second_file, args.format))
 
 
 if __name__ == "__main__":
