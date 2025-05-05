@@ -1,4 +1,7 @@
-from gendiff import generate_diff
+from gendiff.scripts.gendiff import generate_diff
+
+FILE1_JSON = "tests/fixtures/file1.json"
+FILE2_JSON = "tests/fixtures/file2.json"
 
 
 def test_generate_diff():
@@ -10,8 +13,5 @@ def test_generate_diff():
   + timeout: 20
   + verbose: true
 }"""
-    result = generate_diff(
-        "tests/fixtures/file1.json",
-        "tests/fixtures/file2.json"
-    )
+    result = generate_diff(FILE1_JSON, FILE2_JSON)
     assert result == expected

@@ -1,22 +1,28 @@
 import json
 
 
-def generate_diff(file_path1, file_path2, format_name='stylish'):
-    def load_data(file_path):
-        with open(file_path) as file:
-            return json.load(file)
-    data1 = load_data(file_path1)
-    data2 = load_data(file_path2)
-    all_keys = sorted(set(data1.keys()) | set(data2.keys()))
+def generate_diff(file1_path, file2_path):
+    data1 = json.load(open(file1_path))
+    data2 = json.load(open(file2_path))
+
+    def stringify(value):
+        if isinstance(value, bool):
+            return 'true' if value else 'false'
+        if value is None:
+            return 'null'
+        return str(value)
     diff = []
-    for key in all_keys:
+    keys = sorted(data1.keys() | data2.keys())
+    for key in keys:
+        val1 = data1.get(key)
+        val2 = data2.get(key)
         if key not in data2:
-            diff.append(f"  - {key}: {data1[key]}")
+            diff.append(f"  - {key}: {stringify(val1)}")
         elif key not in data1:
-            diff.append(f"  + {key}: {data2[key]}")
-        elif data1[key] != data2[key]:
-            diff.append(f"  - {key}: {data1[key]}")
-            diff.append(f"  + {key}: {data2[key]}")
+            diff.append(f"  + {key}: {stringify(val2)}")
+        elif val1 != val2:
+            diff.append(f"  - {key}: {stringify(val1)}")
+            diff.append(f"  + {key}: {stringify(val2)}")
         else:
-            diff.append(f"    {key}: {data1[key]}")
-    return "{\n" + "\n".join(diff) + "\n}"
+            diff.append(f"    {key}: {stringify(val1)}")
+    return '{\n' + '\n'.join(diff) + '\n}'
