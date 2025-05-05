@@ -1,40 +1,31 @@
 name: Python CI
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened]
+  - push
+  - pull_request
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Важное требование SonarQube для анализа истории
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
+        # make depends on uv
       - name: Install dependencies
         run: |
-          pip install uv pytest pytest-cov
-          make install  # Если у вас есть make install
-
-      - name: Run checks
+          pip install uv
+          pip install pytest pytest-cov
+          make install
+      - name: Run linter and pytest
         run: |
-          make lint
-          make test
-
-      - name: Generate coverage
+          make check
+      - name: Run test coverage
         run: |
           make test-coverage
-
-      - name: SonarQube Scan
+      - name: SonarQubeScan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
