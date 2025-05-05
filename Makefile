@@ -1,5 +1,3 @@
-.PHONY: install test test-coverage lint selfcheck check build
-
 # Install dependencies
 install:
 	uv sync
@@ -23,3 +21,5 @@ build:
 # Run lint
 lint:
 	uv run ruff check
+
+.PHONY: install test lint selfcheck check build
