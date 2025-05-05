@@ -16,6 +16,6 @@ gendiff -h
 
 ### Basic
 
-[![asciicast](https://asciinema.org/a/8gHHPZuNn7y1NNq9556pKDI8i.svg)](https://asciinema.org/a/8gHH
+[![asciicast](https://asciinema.org/a/SZqODsyBIKmes1PNbScnL87F3.svg)](https://asciinema.org/a/SZqODsyBIKmes1PNbScnL87F3)
 
 
