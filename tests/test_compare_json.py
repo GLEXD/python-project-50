@@ -12,4 +12,4 @@ def test_json_comparison():
     file1 = "tests/test_data/file1.json"
     file2 = "tests/test_data/file2.json"
     result = compare_jsons(file1, file2)
-    assert result == True
+    assert result
