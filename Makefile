@@ -7,3 +7,6 @@ package-install:
 # Building the package
 build:
 	uv build
+
+lint:
+	uv run ruff check
