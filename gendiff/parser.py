@@ -1,6 +1,7 @@
 import json
-import yaml
 import os
+
+import yaml
 
 
 class ExtensionError(Exception):

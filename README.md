@@ -5,6 +5,21 @@
 # Project was made for Hexlet by GLEXD
 The program checking two files for changes between them
 
+### Technology Stack
+1. Programming Language:
+* Python version 3.8+
+2. Tools and Librares:
+* Standart Python Library
+* json
+* yaml
+* pytest
+* argparse
+* flake8
+
+### SUPPORTS
+* json
+* yaml
+
 ### INSTALLATION:
 
 make build
@@ -18,4 +33,22 @@ gendiff -h
 
 [![asciicast](https://asciinema.org/a/SZqODsyBIKmes1PNbScnL87F3.svg)](https://asciinema.org/a/SZqODsyBIKmes1PNbScnL87F3)
 
+### Json Files
 
+[![asciicast](https://asciinema.org/a/fqykCyorQQ7Wv4tnYvZaNPnfw.svg)](https://asciinema.org/a/fqykCyorQQ7Wv4tnYvZaNPnfw)
+
+### Yaml Files
+
+[![asciicast](https://asciinema.org/a/a9qyoAVyUo3tkeDePXrqKfpJA.svg)](https://asciinema.org/a/a9qyoAVyUo3tkeDePXrqKfpJA)
+
+### Stylish
+
+[![asciicast](https://asciinema.org/a/gvaR1a8qyupPGH1PAGPVOPE3r.svg)](https://asciinema.org/a/gvaR1a8qyupPGH1PAGPVOPE3r)
+
+### Plain
+
+[![asciicast](https://asciinema.org/a/VL6XHYq83dN0Iza1inc3tAWm5.svg)](https://asciinema.org/a/VL6XHYq83dN0Iza1inc3tAWm5)
+
+### Json
+
+[![asciicast](https://asciinema.org/a/4tkomNp2E3ERpDua1gDYjH1T4.svg)](https://asciinema.org/a/4tkomNp2E3ERpDua1gDYjH1T4)
