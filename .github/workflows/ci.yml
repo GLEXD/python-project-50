@@ -17,8 +17,6 @@ jobs:
         run: |
           pip install uv
           make install
-          make build
-          pip install pytest
       - name: Run linter and pytest
         run: |
           make lint
