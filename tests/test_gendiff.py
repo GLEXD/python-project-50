@@ -1,8 +1,7 @@
 import pytest
-from pathlib import Path
 from gendiff import generate_diff
 
-BASE_DIR = Path(__file__).parent
+FIXTURE_PATH = "tests/fixtures/"   # Тоже самое, что 'BASE_DIR = Path(__file__).parent', но я заменил на переменную из-за большого кол-во импортов
 
 
 @pytest.mark.parametrize("file_1, file_2, expected, format", [
@@ -14,9 +13,9 @@ BASE_DIR = Path(__file__).parent
     ("file_1.yml", "file_2.yml", "json.txt", "json")
 ])
 def test_gendiff(file_1, file_2, expected, format):
-    file_1_path = BASE_DIR / "fixtures" / file_1
-    file_2_path = BASE_DIR / "fixtures" / file_2
-    expected_path = BASE_DIR / "fixtures" / expected
+    file_1_path = f"{FIXTURE_PATH}/{file_1}"
+    file_2_path = f"{FIXTURE_PATH}/{file_2}"
+    expected_path = f"{FIXTURE_PATH}/{expected}"
 
     result = generate_diff(file_1_path, file_2_path, format)
     with open(expected_path) as expected_file:
