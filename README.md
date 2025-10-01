@@ -1,7 +1,9 @@
 ### Hexlet tests and linter status:
+
 [![Actions Status](https://github.com/GLEXD/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/GLEXD/python-project-50/actions)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=GLEXD_python-project-50&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=GLEXD_python-project-50)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=GLEXD_python-project-50&metric=coverage)](https://sonarcloud.io/summary/new_code?id=GLEXD_python-project-50)
+[![Python CI](https://github.com/GLEXD/python-project-50/actions/workflows/ci.yml/badge.svg)](https://github.com/GLEXD/python-project-50/actions/workflows/ci.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=GLEXD_python-project-50&metric=alert_status)]
+
 # Project was made for Hexlet by GLEXD
 The program checking two files for changes between them
 
@@ -14,7 +16,7 @@ The program checking two files for changes between them
 * yaml
 * pytest
 * argparse
-* flake8
+* ruff
 
 ### SUPPORTS
 * json
