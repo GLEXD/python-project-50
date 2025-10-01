@@ -1,7 +1,7 @@
 import pytest
 from gendiff import generate_diff
 
-FIXTURE_PATH = "tests/fixtures/"   # Тоже самое, что 'BASE_DIR = Path(__file__).parent', но я заменил на переменную из-за большого кол-во импортов
+FIXTURE_PATH = "tests/fixtures/"
 
 
 @pytest.mark.parametrize("file_1, file_2, expected, format", [
