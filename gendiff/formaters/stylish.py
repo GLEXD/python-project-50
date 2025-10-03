@@ -1,20 +1,25 @@
 def generate_indent(depth):
-    return " " * (depth * 4)
+    indent_size = 4
+    return " " * (depth * indent_size)
 
 
-def format_value(value, depth):
-    indent = generate_indent(depth)
+def format_value(value, indent_level):
+    indent = generate_indent(indent_level)
     if isinstance(value, dict):
         items = [
-            f"{indent}    {k}: {format_value(v, depth + 1)}"
+            f"{indent}    {k}: {format_value(v, indent_level + 1)}"
             for k, v in value.items()
         ]
-        return f"{{\n{chr(10).join(items)}\n{indent}}}"
+        items_str = "\n".join(items)
+        return f"{{\n{items_str}\n{indent}}}"
     elif value is None:
         return "null"
     elif isinstance(value, bool):
-        return str(value).lower()
-    return str(value)
+        return "true" if value else "false"
+    elif isinstance(value, str):
+        return value
+    else:
+        return str(value)
 
 
 def convert_to_stylish(diff, depth=1):

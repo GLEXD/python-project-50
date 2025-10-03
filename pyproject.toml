@@ -1,18 +1,13 @@
 [project]
 name = "hexlet-code"
 version = "0.1.0"
-description = "Project №2"
+description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "pytest-cov>=6.1.1",
     "pyyaml>=6.0.2",
 ]
-
-
-[project.scripts]
-gendiff = "gendiff.scripts.gendiff:main"
-
 
 [build-system]
 requires = ["hatchling"]
@@ -26,3 +21,6 @@ dev = [
     "pytest>=8.3.5",
     "ruff>=0.11.8",
 ]
+
+[project.scripts]
+gendiff = "gendiff.scripts.gendiff:main"
