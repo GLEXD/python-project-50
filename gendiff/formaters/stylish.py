@@ -16,8 +16,6 @@ def format_value(value, indent_level):
         return "null"
     elif isinstance(value, bool):
         return "true" if value else "false"
-    elif isinstance(value, str):
-        return value
     else:
         return str(value)
 
