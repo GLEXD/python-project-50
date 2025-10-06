@@ -3,31 +3,28 @@ def generate_indent(depth):
     return " " * (depth * indent_size)
 
 
-def format_value(value, depth):
+def format_value(value, indent_level):
+    indent = generate_indent(indent_level)
     if isinstance(value, dict):
-        lines = []
-        inner_indent = generate_indent(depth + 1)
-        for k, v in value.items():
-            lines.append(f"{inner_indent}{k}: {format_value(v, depth + 1)}")
-        closing_indent = generate_indent(depth)
-        return "{\n" + "\n".join(lines) + f"\n{closing_indent}" + "}"
-    if value is None:
+        items = [
+            f"{indent}    {k}: {format_value(v, indent_level + 1)}"
+            for k, v in value.items()
+        ]
+        items_str = "\n".join(items)
+        return f"{{\n{items_str}\n{indent}}}"
+    elif value is None:
         return "null"
-    if isinstance(value, bool):
+    elif isinstance(value, bool):
         return "true" if value else "false"
-    return str(value)
+    elif value == "":
+        return " "
+    else:
+        return str(value)
 
 
 def convert_to_stylish(diff, depth=1):
     indent = generate_indent(depth)
-    result_lines = []
-
-    def make_line(prefix, key, raw_value):
-        value_str = format_value(raw_value, depth)
-        if value_str == "":
-            return f"{prefix}{key}:"
-        else:
-            return f"{prefix}{key}: {value_str}"
+    result = []
 
     for item in diff:
         key = item["key"]
@@ -35,30 +32,26 @@ def convert_to_stylish(diff, depth=1):
 
         if status == "nested":
             nested = convert_to_stylish(item["nested"], depth + 1)
-            result_lines.append(f"{indent}{key}: {nested}")
+            result.append(f"{indent}{key}: {nested}")
         elif status == "added":
-            prefix = indent[:-2] + "+ "
-            result_lines.append(make_line(prefix, key, item.get("new_value")))
+            new_value = format_value(item["new_value"], depth)
+            result.append(f"{indent[:-2]}+ {key}: {new_value}")
         elif status == "removed":
-            prefix = indent[:-2] + "- "
-            result_lines.append(make_line(prefix, key, item.get("old_value")))
+            old_value = format_value(item["old_value"], depth)
+            result.append(f"{indent[:-2]}- {key}: {old_value}")
         elif status == "updated":
-            prefix_minus = indent[:-2] + "- "
-            prefix_plus = indent[:-2] + "+ "
-            result_lines.append(make_line(
-                prefix_minus,
-                key,
-                item.get("old_value")
-            ))
-            result_lines.append(make_line(
-                prefix_plus,
-                key,
-                item.get("new_value")
-            ))
+            old_value = format_value(item["old_value"], depth)
+            new_value = format_value(item["new_value"], depth)
+            result.append(f"{indent[:-2]}- {key}: {old_value}")
+            result.append(f"{indent[:-2]}+ {key}: {new_value}")
         elif status == "unchanged":
-            result_lines.append(make_line(indent, key, item.get("old_value")))
-        else:
-            raise ValueError(f"Unknown status: {status}")
+            old_value = format_value(item["old_value"], depth)
+            result.append(f"{indent}{key}: {old_value}")
 
+    result_str = "\n".join(result)
     outer_indent = generate_indent(depth - 1)
-    return "{\n" + "\n".join(result_lines) + f"\n{outer_indent}" + "}"
+
+    if depth > 1:
+        return f"{{\n{result_str}\n{outer_indent}}}"
+    else:
+        return f"{{\n{result_str}\n}}"
