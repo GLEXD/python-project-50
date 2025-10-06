@@ -45,8 +45,16 @@ def convert_to_stylish(diff, depth=1):
         elif status == "updated":
             prefix_minus = indent[:-2] + "- "
             prefix_plus = indent[:-2] + "+ "
-            result_lines.append(make_line(prefix_minus, key, item.get("old_value")))
-            result_lines.append(make_line(prefix_plus, key, item.get("new_value")))
+            result_lines.append(make_line(
+                prefix_minus,
+                key,
+                item.get("old_value")
+            ))
+            result_lines.append(make_line(
+                prefix_plus,
+                key,
+                item.get("new_value")
+            ))
         elif status == "unchanged":
             result_lines.append(make_line(indent, key, item.get("old_value")))
         else:
