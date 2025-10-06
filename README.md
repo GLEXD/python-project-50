@@ -5,7 +5,7 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=GLEXD_python-project-50&metric=coverage)](https://sonarcloud.io/summary/new_code?id=GLEXD_python-project-50)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=GLEXD_python-project-50&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=GLEXD_python-project-50)
 
-# Project was made for Hexlet by GlebBurimov
+# Project was made for Hexlet by Gleb Burimov
 The program checking two files for changes between them
 
 ### Technology Stack
