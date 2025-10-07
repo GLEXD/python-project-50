@@ -17,7 +17,7 @@ def format_value(value, indent_level):
     elif isinstance(value, bool):
         return "true" if value else "false"
     elif value == "":
-        return "''"
+        return '""'
     else:
         return str(value)
 
