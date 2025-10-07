@@ -14,6 +14,8 @@ def format_value(value, indent_level):
         return f"{{\n{items_str}\n{indent}}}"
     elif value is None:
         return "null"
+    elif value == "":
+        return "''"
     elif isinstance(value, bool):
         return "true" if value else "false"
     else:
