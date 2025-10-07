@@ -47,7 +47,7 @@
               {
                 "key": "wow",
                 "status": "updated",
-                "old_value": "",
+                "old_value": "value",
                 "new_value": "so much"
               }
             ]

@@ -16,8 +16,6 @@ def format_value(value, indent_level):
         return "null"
     elif isinstance(value, bool):
         return "true" if value else "false"
-    elif value == "":
-        return '""'
     else:
         return str(value)
 
@@ -37,9 +35,6 @@ def convert_to_stylish(diff, depth=1):
             new_value = format_value(item["new_value"], depth)
             result.append(f"{indent[:-2]}+ {key}: {new_value}")
         elif status == "removed":
-            print(f"DEBUG REMOVED: {key=}, {item=}")
-            if key == "wow":
-                print(f"DEBUG WOW: old_value is {repr(item['old_value'])}")
             old_value = format_value(item["old_value"], depth)
             result.append(f"{indent[:-2]}- {key}: {old_value}")
         elif status == "updated":
