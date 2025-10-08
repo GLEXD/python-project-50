@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-from gendiff import generate_diff
-from gendiff.cli import parse_args
+from cli import parse_args
+from generate_diff import generate_diff
 
 
 def main():
